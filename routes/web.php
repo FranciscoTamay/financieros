@@ -17,4 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Rutas para plantilla
 Route::view('master', 'layaout.master');
+// ======================================
+
+
+// Rutas de vistas 
+Route::view('xml', 'leerXml');
+// ======================================
+
+
+// Rutas de controladores(API)
+// =======================================
