@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AlumnoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +29,5 @@ Route::view('xml', 'leerXml');
 
 // Rutas de controladores(API)
 // =======================================
+Route::get('/import-form', [AlumnoController::class, 'importForm']);
+Route::post('/import', [AlumnoController::class, 'import']);
