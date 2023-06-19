@@ -24,11 +24,11 @@ Route::view('master', 'layaout.master');
 
 // Rutas de vistas 
 Route::view('xml', 'leerXml');
+Route::view('alumnos', 'alumnos');
 // ======================================
 
 
 // Rutas de controladores(API)
-
 // =======================================
 Route::get('/import-form', [AlumnoController::class, 'importForm']);
 Route::post('/import', [AlumnoController::class, 'import']);
