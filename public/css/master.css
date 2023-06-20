@@ -319,8 +319,8 @@ tr:hover~tr:first-child td:last-child {
     width: 10rem;
     height: 3rem;
     font-weight: 700;
-    color: var(--var--texto2);
-    border: var(--var--nav);
+    color: var(--var--texto);
+    border: 2px solid #fff;
     border-radius: var(--var--border-radius);
     background: #1c7406;
 }

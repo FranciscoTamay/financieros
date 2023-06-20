@@ -1,7 +1,7 @@
 @extends('layaout.master')
 @section('content')
 <div class="t">Alumnos</div>
-<!-- <button class="btn-agregar">Subir Exel</button> -->
+<button class="btn-agregar">Subir Exel</button>
 <button class="btn-agregar" id="open-modal">Agregar<i class="fa-solid fa-plus"></i></button>
 <div class="marco">
     <table id="example" class="display respoññnsive nowrap" style="width:100%">
@@ -272,7 +272,7 @@
 </div>
 <div id="modal" class="modal">
     <div class="modal-content">
-        <div class="t-m">Agregar Producto
+        <div class="t-m">Agregar Alumno
             <span class="close">
                 <i class="fa-solid fa-xmark"></i>
             </span>
