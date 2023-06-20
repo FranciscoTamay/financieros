@@ -17,11 +17,7 @@
         <a href="#">Inicio</a>
         <a href="xml">xml</a>
         <a href="alumnos">Alumnos</a>
-        <label class="switch">
-            <input type="checkbox" id="mode-switch">
-            <span class="slider"></span>
-        </label>
-        <a href="#"><i class="fa-solid fa-right-from-bracket"></i></a>
+        <button class="modo" id="modoToggle"><i class="fa-solid fa-moon"></i></button>
     </nav>
     <div class="contenido">
         @yield('content')
@@ -32,27 +28,43 @@
     <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
     <script src="https://kit.fontawesome.com/c892f5f399.js" crossorigin="anonymous"></script>
     <script src="js/master.js"></script>
+    <script>
+        // Obtener el botón de cambio de modo
+        var modoToggle = document.getElementById("modoToggle");
+
+        // Añadir un listener de eventos al botón
+        modoToggle.addEventListener("click", function() {
+            // Obtener el elemento raíz
+            var rootElement = document.documentElement;
+
+            // Alternar la clase "dark" en el elemento raíz
+            rootElement.classList.toggle("dark");
+
+            // Obtener el ícono dentro del botón
+            var icono = modoToggle.querySelector("i");
+
+            // Cambiar el ícono según el modo
+            if (rootElement.classList.contains("dark")) {
+                icono.className = "fa-solid fa-sun";
+                localStorage.setItem("modo", "dark");
+            } else {
+                icono.className = "fa-solid fa-moon";
+                localStorage.setItem("modo", "claro");
+            }
+        });
+
+        // Verificar la preferencia del modo guardada en el localStorage
+        var preferenciaModo = localStorage.getItem("modo");
+        if (preferenciaModo === "dark") {
+            // Si la preferencia es modo oscuro, añadir la clase "dark" al elemento raíz
+            document.documentElement.classList.add("dark");
+
+            // Obtener el ícono dentro del botón
+            var icono = modoToggle.querySelector("i");
+            icono.className = "fa-solid fa-sun";
+        }
+    </script>
     @yield('scripts')
 </body>
-<script>
-    // Obtener el elemento del interruptor de modo
-    const modeSwitch = document.querySelector('#mode-switch');
-
-    // Escuchar el evento de cambio de interruptor de modo
-    modeSwitch.addEventListener('change', toggleMode);
-
-    // Función para cambiar el modo
-    function toggleMode() {
-        const body = document.querySelector('body');
-
-        // Si se activa el modo oscuro, agregar la clase 'dark-mode' al cuerpo
-        if (modeSwitch.checked) {
-            body.classList.add('dark-mode');
-        } else {
-            // Si se desactiva el modo oscuro, quitar la clase 'dark-mode' del cuerpo
-            body.classList.remove('dark-mode');
-        }
-    }
-</script>
 
 </html>
