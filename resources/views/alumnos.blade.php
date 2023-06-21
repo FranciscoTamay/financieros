@@ -1,7 +1,8 @@
 @extends('layaout.master')
 @section('content')
 <div class="t">Alumnos</div>
-<button class="btn-agregar">Subir EXEL</button>
+<button class="btn-agregar">Subir Exel</button>
+<button class="btn-agregar" id="open-modal">Agregar<i class="fa-solid fa-plus"></i></button>
 <div class="marco">
     <table id="example" class="display respoññnsive nowrap" style="width:100%">
         <thead>
@@ -269,10 +270,36 @@
         </tbody>
     </table>
 </div>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <div class="t-m">Agregar Alumno
+            <span class="close">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+        </div>
+        <div class="ventana">
+            <div class="grupo-input">
+
+                <div class="g">
+                    <i class="fa-solid fa-tag"></i>
+                    <input class="input" type="text" id="p-nombre" placeholder="Nombre">
+                </div>
+
+                <div class="g">
+                    <i class="fa-solid fa-coins"></i>
+                    <input class="input" type="number" id="precio" placeholder="Precio">
+                </div>
+                <div class="g">
+                    <i class="fa-solid fa-cart-flatbed"></i>
+                    <input class="input" type="number" id="cantidad" placeholder="Cantidad">
+                </div>
+            </div>
+        </div>
+        <button class="btn-save">Guardar<i class="fa-solid fa-floppy-disk"></i></button>
+    </div>
+</div>
 @endsection
-
 @section('scripts')
-
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
@@ -303,7 +330,7 @@
             }],
             "lengthMenu": [6, 10, 25, 50], // Configurar las opciones de cantidad de filas por página
             "pageLength": 6 // Establecer el número de filas por página por defecto
-        });
+        }).responsive.recalc(); // Desactivar ocultación de columnas en las vistas responsivas
     });
 </script>
 @endsection
