@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\XMLController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +31,7 @@ Route::view('alumnos', 'alumnos');
 
 
 // Rutas de controladores(API)
+Route::post('guardarXML', [XMLController::class, 'store']);
 // =======================================
 Route::get('/import-form', [AlumnoController::class, 'importForm']);
 Route::post('/import', [AlumnoController::class, 'import']);

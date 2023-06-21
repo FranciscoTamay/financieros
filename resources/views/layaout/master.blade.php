@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/datatable.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 
 <body>
