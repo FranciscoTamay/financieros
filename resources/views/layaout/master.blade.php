@@ -32,10 +32,10 @@
     <script src="js/master.js"></script>
     <script>
         // Obtener el botón de cambio de modo
-        var modoToggle = document.getElementById("modoToggle");
+        var modo = document.getElementById("modoToggle");
 
         // Añadir un listener de eventos al botón
-        modoToggle.addEventListener("click", function() {
+        modo.addEventListener("click", function() {
             // Obtener el elemento raíz
             var rootElement = document.documentElement;
 
@@ -43,7 +43,7 @@
             rootElement.classList.toggle("dark");
 
             // Obtener el ícono dentro del botón
-            var icono = modoToggle.querySelector("i");
+            var icono = modo.querySelector("i");
 
             // Cambiar el ícono según el modo
             if (rootElement.classList.contains("dark")) {
@@ -62,7 +62,7 @@
             document.documentElement.classList.add("dark");
 
             // Obtener el ícono dentro del botón
-            var icono = modoToggle.querySelector("i");
+            var icono =  modo.querySelector("i");
             icono.className = "fa-solid fa-sun";
         }
     </script>
