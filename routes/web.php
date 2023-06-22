@@ -31,7 +31,8 @@ Route::view('alumnos', 'alumnos');
 
 
 // Rutas de controladores(API)
-Route::post('guardarXML', [XMLController::class, 'store']);
+Route::post('/guardarXML', [XMLController::class,'store']);
+
 // =======================================
 Route::get('/import-form', [AlumnoController::class, 'importForm']);
 Route::post('/import', [AlumnoController::class, 'import']);

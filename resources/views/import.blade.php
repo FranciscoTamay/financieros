@@ -73,5 +73,62 @@
             @endif
         });
     </script>
+    <script>
+        document.getElementById('xmlForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+
+  var fileInput = document.getElementById('xmlFile');
+  var file = fileInput.files[0]; // Obtener el archivo seleccionado por el usuario
+
+  if (file) {
+    var reader = new FileReader();
+
+    reader.onload = function(event) {
+      var contenidoXML = event.target.result;
+
+      // Crear una instancia de DOMParser para analizar el contenido XML
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(contenidoXML, 'text/xml');
+
+      // Obtener los valores necesarios del XML
+      var receptorElement = xmlDoc.getElementsByTagName('cfdi:Receptor')[0];
+      var rfc = receptorElement.getAttribute('Rfc');
+      var nombre = receptorElement.getAttribute('Nombre');
+
+      // Crear un objeto con los datos a enviar al controlador de Laravel
+      var datos = {
+        rfc: rfc,
+        nombre: nombre
+      };
+
+      // Enviar la solicitud AJAX al controlador de Laravel
+      var url = '/guardar-xml'; // Ruta del controlador de Laravel para guardar los datos
+      var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); // Obtener el token CSRF de Laravel
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': token
+        },
+        body: JSON.stringify(datos)
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Manejar la respuesta del controlador de Laravel
+        console.log(data);
+        // ... Hacer algo con la respuesta ...
+      })
+      .catch(error => {
+        console.error(error);
+        // ... Manejar el error ...
+      });
+    };
+
+    reader.readAsText(file); // Leer el contenido del archivo como texto
+  }
+});
+
+    </script>
 </body>
 </html>

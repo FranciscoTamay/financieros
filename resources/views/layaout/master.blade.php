@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=0.9" />
+    <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <title>@yield('title')Inicio</title>
     <link rel="icon" type="image/png" href="otros/path4490.png">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
