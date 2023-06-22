@@ -1,34 +1,51 @@
 @extends('layaout.master')
 @section('content')
 <form id="xmlForm">
-<div class="mb-3">
+<div class="mb-2">
   <label for="xmlFile" class="form-label">Ingrese su archivo XML</label>
   <input class="form-control" name="archivo"  type="file" id="xmlFile" accept=".xml">
-  <input type="submit" value="Cargar" class="btn btn-primary btn-lg" >
+  <div class="col-md-4 offset-md-4">
+  <div class="d-grid mx-auto">
+    <button type="submit" class="btn btn-primary"><i class="fa-regular fa-file-import"></i> Cargar</button>
+  </div>
+  </div>
 </div>
 </form>
 
-<table class="table table-stripred">
-  <thead>
-    <tr>
-      <th>Fecha</th>
-      <th>RFC</th>
-      <th>Nombre de la empresa</th>
-      <th>Producto</th>
-      <th>Importe</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-  </tbody>
-</table>
+
+<form method="post" action="guardarConcentrado" class="row g-3 needs-validation" novalidate>
+<div class="row">
+  <div class="col-md-4 m-3">  
+  <label for="" class="form-label">Fecha</label>
+  <input type="text" name="fecha" id="fecha" class="form-control mt-2" value="" readonly>
+  </div>
+
+
+  <div class="col-md-4 m-3">
+  <label for="" class="form-label">RFC</label>
+  <input type="text" name="rfc" id="rfc" class="form-control mt-2" value="" readonly>
+  </div>
+
+
+  <div class="col-md-4 m-3">
+  <label for="" class="form-label">Razon Social</label>
+  <input type="text" name="razon_social" class="form-control mt-2" id="razon_social" value="" readonly>
+  </div>
+
+  <div class="col-md-4 m-3">
+  <label for="" class="form-label">Producto</label>
+  <input type="text" name="producto" class="form-control mt-2" id="producto" value="" readonly>
+  </div>
+
+  <div class="col-md-4 m-3">
+  <label for="" class="form-label">Importe</label>
+  <input type="text" name="importe" class="form-control mt-2" id="importe" value="" readonly>
+  </div>
+
+  </div>
+</form>
+
 @endsection
 @section('scripts')
 <script>
@@ -71,28 +88,16 @@ document.getElementById('xmlForm').addEventListener('submit',function(event){
 
       console.log(datos);
 
-      // Enviar la solicitud AJAX al controlador de Laravel
-      var url = '/guardarXML'; // Ruta del controlador de Laravel para guardar los datos
-      var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); // Obtener el token CSRF de Laravel
+      // Asignamos los valores a los campos de entrada
+      document.getElementById('fecha').value = fecha;
+      document.getElementById('rfc').value = rfc;
+      document.getElementById('razon_social').value = razon_social;
+      document.getElementById('producto').value = producto;
+      document.getElementById('importe').value = importe;
 
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': token
-        },
-        body: JSON.stringify(datos)
-      })
-      .then(response => response.json())
-      .then(data => {
-        // Manejar la respuesta del controlador de Laravel
-        console.log(data);
-        // ... Hacer algo con la respuesta ...
-      })
-      .catch(error => {
-        console.error(error);
-        // ... Manejar el error ...
-      });
+
+
+      
 
     };
 
