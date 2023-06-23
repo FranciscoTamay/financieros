@@ -27,11 +27,14 @@ Route::view('master', 'layaout.master');
 // Rutas de vistas 
 Route::view('xml', 'leerXml');
 Route::view('alumnos', 'alumnos');
+Route::view('form', 'prueba');
+
 // ======================================
 
 
 // Rutas de controladores(API)
-Route::post('/guardarXML', [XMLController::class,'store']);
+
+Route::post('guardarConcentrado', [XMLController::class, 'store']);
 
 // =======================================
 Route::get('/import-form', [AlumnoController::class, 'importForm']);

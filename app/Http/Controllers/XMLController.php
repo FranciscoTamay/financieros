@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\xml;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+
 
 
 class XMLController extends Controller
@@ -26,15 +25,24 @@ class XMLController extends Controller
     {
         $request->validate([
             'fecha'=>'required',
-            'rfc'=>'requred',
+            'rfc'=>'required',
             'razon_social'=>'required',
-            'producto'=>'required',
-            'importe'=>'required|numeric'
+            'producto'=>'required|',
+            'importe'=>'required',
+            'id_partida'=>'required'
+
 
         ]);
 
         $xml = new xml;
+        $xml->fecha=$request->fecha;
+        $xml->razon_social=$request->rfc;
+        $xml->producto=$request->producto;
+        $xml->importe=$request->importe;
+        $xml->id_partida=$request->id_partida;
         $xml->save();
+
+        return back()->with('success','Concentrado validado con exito');
 
     }
     /**
