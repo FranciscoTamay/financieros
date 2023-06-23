@@ -24,21 +24,18 @@ class XMLController extends Controller
      */
     public function store(Request $request)
     {
-        $fecha = $request->input('fecha');
-        $rfc = $request->input('rfc');
-        $razon_social = $request->input('razon_social');
-        $producto = $request->input('producto');
-        $importe = $request->input('importe');
+        $request->validate([
+            'fecha'=>'required',
+            'rfc'=>'requred',
+            'razon_social'=>'required',
+            'producto'=>'required',
+            'importe'=>'required|numeric'
+
+        ]);
 
         $xml = new xml;
-        $xml->fecha = $fecha;
-        $xml->rfc = $rfc;
-        $xml->razon_social = $razon_social;
-        $xml->producto = $producto;
-        $xml->importe = $importe;
         $xml->save();
 
-        return response()->json(['success'=>true,'message'=>'Datos guardados correctamente']);
     }
     /**
      * Display the specified resource.
